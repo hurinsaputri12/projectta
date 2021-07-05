@@ -53,7 +53,7 @@ class AuthController extends Controller
         return redirect()->route('auth.login');
     }
 
-   
+
 
     public function tampilReset(){
         return view('auth.reset');
