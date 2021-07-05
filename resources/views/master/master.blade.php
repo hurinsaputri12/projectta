@@ -18,9 +18,12 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('back/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+  <link href="{{ asset('back/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
+    @include('sweetalert::alert')
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -37,8 +40,8 @@
       <hr class="sidebar-divider my-3">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.beranda')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -52,7 +55,7 @@
 
       <!-- Nav Item - Buku -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin.buku.buku')}}">
           <i class="fas fa-fw fa-book"></i>
           <span>Buku</span></a>
       </li>
@@ -66,20 +69,22 @@
 
       <!-- Nav Item - Ebook -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin.ebook.ebook')}}">
           <i class="fas fa-fw fa-book"></i>
           <span>Ebook</span></a>
       </li>
 
       <!-- Nav Item - Lapak Baca -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin.lapak.lapak')}}">
           <i class="fas fa-fw fa-calendar"></i>
           <span>Lapak Baca</span></a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+
+      @yield('nav')
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -254,7 +259,7 @@
         <!-- End of Topbar -->
 
 @yield('content')
-@include('sweetalert::alert')
+
         <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -289,12 +294,12 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="{{route('auth.logout')}}">Logout</a>
         </div>
       </div>
     </div>
   </div>
-  @yield('js')
+
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('back/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('back/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -311,6 +316,17 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('back/js/demo/chart-area-demo.js')}}"></script>
   <script src="{{asset('back/js/demo/chart-pie-demo.js')}}"></script>
+  @yield('js')
+<!-- Page level plugins -->
+  <script src="{{ asset('back/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('back/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  <script>
+      $(document).ready(function() {
+        $('.dataTable').DataTable();
+        });
+  </script>
 
 </body>
 
