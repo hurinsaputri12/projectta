@@ -48,7 +48,7 @@
 
       <!-- Nav Item - Pengguna -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin.pengguna.pengguna')}}">
           <i class="fas fa-fw fa-clipboard-list"></i>
           <span>Pengguna</span></a>
       </li>
@@ -62,7 +62,7 @@
 
       <!-- Nav Item - Donasi Buku -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin.donasi.pengajuandonasi')}}">
           <i class="fas fa-fw fa-clipboard-list"></i>
           <span>Donasi Buku</span></a>
       </li>
