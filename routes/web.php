@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth', 'admin-role']], function(){
     Route::post('/admin/lapak/storelapak','LapakController@store')->name('admin.lapak.storelapak');
     Route::get('/admin/lapak/detaillapak/{id}','LapakController@show')->name('admin.lapak.detaillapak');
     Route::get('/admin/lapak/editlapak/{id}','LapakController@edit')->name('admin.lapak.editlapak');
+    Route::post('/admin/lapak/updatelapak/{id}','LapakController@update')->name('admin.lapak.updatelapak');
+    Route::get('/admin/lapak/hapuslapak/{id}','LapakController@destroy')->name('admin.lapak.hapuslapak');
     Route::get('/admin/lapak/validasirelawan','LapakController@validasiRelawan')->name('admin.lapak.validasirelawan');
     Route::get('/admin/lapak/daftarrelawan','LapakController@daftarRelawan')->name('admin.lapak.daftarrelawan');
     // pengguna

@@ -69,7 +69,7 @@
                               <td>{{ $item->lokasi }}</td>
                               <td><a href="{{ route('admin.lapak.detaillapak',[$item->id])}}" class="btn btn-success"><span class="text">Lihat</span></a>
                                   <a href="{{ route('admin.lapak.editlapak',[$item->id])}}" class="btn btn-info"><span class="text">Edit</span></a>
-                                <a href="#" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                                <a href="{{ route('admin.lapak.hapuslapak',[$item->id])}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                               </td>
                             </tr>
                             @endforeach

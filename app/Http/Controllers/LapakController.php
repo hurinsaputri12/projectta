@@ -85,7 +85,10 @@ class LapakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lapak = Lapak::find($id);
+        $lapak->update($request->all());
+        Alert::toast('update data berhasil', 'success');
+        return redirect()->route('admin.lapak.lapak');
     }
 
     /**
@@ -96,7 +99,12 @@ class LapakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lapak = Lapak::Find($id);
+        $lapak->delete();
+        Alert::toast('hapus data berhasil', 'success');
+        return redirect()->back();
+
+
     }
 
     public function validasiRelawan()
