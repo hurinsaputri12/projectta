@@ -27,14 +27,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Hurin In Dinnar</td>
-                <td>hurinsaputri123@gmail.com</td>
-                <td>1234</td>
-                <td>0975317368</td>
-              </tr>
-            </tbody>
+                @php
+                    $no = 1
+                @endphp
+                @foreach ($pengguna as $item)
+                <tr>
+                  <td>{{ $no++ }}</td>
+                  <td>{{ $item->nama}}</td>
+                  <td>{{ $item->email }}</td>
+                  <td>{{ $item->password }}</td>
+                  <td>{{ $item->nomor_telepon }}</td>
+                </tr>
+                @endforeach
+              </tbody>
           </table>
         </div>
       </div>
