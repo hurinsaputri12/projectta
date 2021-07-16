@@ -62,9 +62,16 @@
 
       <!-- Nav Item - Donasi Buku -->
       <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.donasi.pengajuandonasi')}}">
+        <a class="nav-link" href="{{route('admin.donasibuku.validasipengajuandonasi')}}">
           <i class="fas fa-fw fa-clipboard-list"></i>
           <span>Donasi Buku</span></a>
+      </li>
+
+      <!-- Nav Item - Donasi Ebook -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.donasiebook.validasipengajuandonasiebook')}}">
+          <i class="fas fa-fw fa-clipboard-list"></i>
+          <span>Donasi Ebook</span></a>
       </li>
 
       <!-- Nav Item - Ebook -->

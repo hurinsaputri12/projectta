@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Donasi;
 use Illuminate\Http\Request;
 
 class DonasiController extends Controller
@@ -11,19 +11,40 @@ class DonasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function pengajuanDonasi()
+    public function validasiPengajuanDonasiBuku()
     {
-        return view('admin.donasi.pengajuandonasi');
+        $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','buku-cetak')
+             ->get();
+        return view('admin.donasibuku.validasipengajuandonasi', compact('donasibuku'));
     }
 
-    public function daftarDonasi()
+    public function daftarDonasiBuku()
     {
-        return view('admin.donasi.daftardonasi');
+        return view('admin.donasibuku.daftardonasi');
     }
 
-    public function validasiDonasi()
+    public function validasiDonasiBuku()
     {
-        return view('admin.donasi.validasidonasi');
+        return view('admin.donasibuku.validasidonasi');
+    }
+
+    public function validasiPengajuanDonasiEbook()
+    {
+        $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','ebook')
+             ->get();
+        return view('admin.donasiebook.validasipengajuandonasiebook', compact('donasiebook'));
+    }
+
+    public function daftarDonasiEbook()
+    {
+        return view('admin.donasiebook.daftardonasiebook');
+    }
+
+    public function validasiDonasiEbook()
+    {
+        return view('admin.donasiebook.validasidonasiebook');
     }
     /**
      * Show the form for creating a new resource.

@@ -1,7 +1,7 @@
 @extends('master.master')
 
 @section('title')
- <title>Pengajuan Donasi</title>
+ <title>Validasi Pengajuan Donasi Buku</title>
 @endsection
 
 @section('nav')
@@ -11,19 +11,19 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item active">
-    <a class="nav-link" href="{{route('admin.donasi.pengajuandonasi')}}">
+    <a class="nav-link" href="{{route('admin.donasibuku.validasipengajuandonasi')}}">
       <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Validasi Pengajuan Donasi Buku</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{route('admin.donasi.daftardonasi')}}">
+    <a class="nav-link" href="{{route('admin.donasibuku.daftardonasi')}}">
       <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Daftar Donasi Buku</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{route('admin.donasi.validasidonasi')}}">
+    <a class="nav-link" href="{{route('admin.donasibuku.validasidonasi')}}">
       <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Validasi Donasi Buku</span></a>
   </li>
@@ -44,27 +44,32 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Donatur</th>
-                            <th>Judul buku</th>
-                            <th>Kategori</th>
-                            <th>Jumlah buku</th>
-                            <th>File buku</th>
+                            <th>Judul Buku</th>
+                            <th>Jumlah Buku</th>
+                            <th>Alamat Donatur</th>
+                            <th>Cover Buku</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Dino</td>
-                            <td>Jangan Berhenti Berdoa</td>
-                            <td>Novel</td>
-                            <td>3</td>
-                            <td><img src="../img/jangan berhenti berdoa.jpg"width="50" height="80"/></td>
-                            <td><a href="#" class="btn btn-info"><span class="text">Disetujui</span></a>
+                            @php
+                                $no = 1
+                            @endphp
+                            @foreach ($donasibuku as $item)
+                            <tr>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $item->nama }}</td>
+                              <td>{{ $item->judul_buku }}</td>
+                              <td>{{ $item->jumlah_buku }}</td>
+                              <td>{{ $item->alamat_donatur }}</td>
+                              <td></td>
+                              <td><a href="#" class="btn btn-info"><span class="text">Disetujui</span></a>
                                 <a href="#" class="btn btn-danger"><span class="text">Tidak disetujui</span></a>
                             </td>
-                          </tr>
-                        </tbody>
-                    </table>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                  </table>
                     </div>
                 </div>
                 </div>
