@@ -21,12 +21,18 @@ class DonasiController extends Controller
 
     public function daftarDonasiBuku()
     {
-        return view('admin.donasibuku.daftardonasi');
+        $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','buku-cetak')
+             ->get();
+        return view('admin.donasibuku.daftardonasi', compact('donasibuku'));
     }
 
     public function validasiDonasiBuku()
     {
-        return view('admin.donasibuku.validasidonasi');
+        $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','buku-cetak')
+             ->get();
+        return view('admin.donasibuku.validasidonasi', compact('donasibuku'));
     }
 
     public function validasiPengajuanDonasiEbook()
@@ -39,12 +45,18 @@ class DonasiController extends Controller
 
     public function daftarDonasiEbook()
     {
-        return view('admin.donasiebook.daftardonasiebook');
+        $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','ebook')
+             ->get();
+        return view('admin.donasiebook.daftardonasiebook', compact('donasiebook'));
     }
 
     public function validasiDonasiEbook()
     {
-        return view('admin.donasiebook.validasidonasiebook');
+        $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->where('jenis_buku','ebook')
+             ->get();
+        return view('admin.donasiebook.validasidonasiebook', compact('donasiebook'));
     }
     /**
      * Show the form for creating a new resource.

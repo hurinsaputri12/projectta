@@ -53,18 +53,23 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Dino</td>
-                            <td>Jangan Berhenti Berdoa</td>
-                            <td>3</td>
-                            <td>Srono</td>
-                            <td></td>
-                            <td><a href="#" class="btn btn-info"><span class="text">Diterima</span></a>
-                                <a href="#" class="btn btn-danger"><span class="text">Tidak diterima</span></a>
+                            @php
+                                $no = 1
+                            @endphp
+                            @foreach ($donasiebook as $item)
+                            <tr>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $item->nama }}</td>
+                              <td>{{ $item->judul_buku }}</td>
+                              <td>{{ $item->jumlah_buku }}</td>
+                              <td>{{ $item->alamat_donatur }}</td>
+                              <td></td>
+                              <td><a href="#" class="btn btn-info"><span class="text">Disetujui</span></a>
+                                <a href="#" class="btn btn-danger"><span class="text">Tidak disetujui</span></a>
                             </td>
-                          </tr>
-                        </tbody>
+                            </tr>
+                            @endforeach
+                          </tbody>
                     </table>
                     </div>
                 </div>

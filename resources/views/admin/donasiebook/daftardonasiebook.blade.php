@@ -47,22 +47,27 @@
                     <th>Judul Buku</th>
                     <th>Jumlah Buku</th>
                     <th>Jenis Buku</th>
-                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $no = 1
+                    @endphp
+                    @foreach ($donasiebook as $item)
                     <tr>
-                        <td>1</td>
-                        <td>Ayla</td>
-                        <td>Srono</td>
-                        <td>Kata</td>
-                        <td>3</td>
-                        <td>Buku cetak</td>
-                        <td>Belum diterima</td>
-                        <td><a href="#" class="btn btn-danger"><span class="text">Hapus</span></a> </td>
+                      <td>{{ $no++ }}</td>
+                      <td>{{ $item->nama }}</td>
+                      <td>{{ $item->alamat_donatur }}</td>
+                      <td>{{ $item->judul_buku }}</td>
+                      <td>{{ $item->jumlah_buku }}</td>
+                      <td>{{ $item->jenis_buku }}</td>
+                      <td><a href="" class="btn btn-info"><span class="text">Edit</span></a>
+                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                      </td>
                     </tr>
-            </tbody>
+                    @endforeach
+                </tbody>
           </table>
         </div>
       </div>
