@@ -15,6 +15,7 @@ class DonasiController extends Controller
     {
         $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
              ->where('jenis_buku','buku-cetak')
+             ->where('status', 0)
              ->get();
         return view('admin.donasibuku.validasipengajuandonasi', compact('donasibuku'));
     }
@@ -39,6 +40,7 @@ class DonasiController extends Controller
     {
         $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
              ->where('jenis_buku','ebook')
+             ->where('status', 0)
              ->get();
         return view('admin.donasiebook.validasipengajuandonasiebook', compact('donasiebook'));
     }
