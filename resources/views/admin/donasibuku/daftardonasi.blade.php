@@ -63,7 +63,7 @@
                       <td>{{ $item->jumlah_buku }}</td>
                       <td>{{ $item->jenis_buku }}</td>
                       <td><a href="" class="btn btn-info"><span class="text">Edit</span></a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                        <a href="" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                       </td>
                     </tr>
                     @endforeach

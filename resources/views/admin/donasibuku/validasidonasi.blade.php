@@ -63,8 +63,8 @@
                               <td>{{ $item->jumlah_buku }}</td>
                               <td>{{ $item->alamat_donatur }}</td>
                               <td></td>
-                              <td><a href="#" class="btn btn-info"><span class="text">Disetujui</span></a>
-                                <a href="#" class="btn btn-danger"><span class="text">Tidak disetujui</span></a>
+                              <td><a href="#" class="btn btn-info"><span class="text">Diterima</span></a>
+                                <a href="#" class="btn btn-danger"><span class="text">Tidak diterima</span></a>
                             </td>
                             </tr>
                             @endforeach
