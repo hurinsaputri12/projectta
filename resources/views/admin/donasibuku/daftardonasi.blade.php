@@ -46,7 +46,7 @@
                     <th>Alamat Donatur</th>
                     <th>Judul Buku</th>
                     <th>Jumlah Buku</th>
-                    <th>Jenis Buku</th>
+                    <th>Cover Buku</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -61,7 +61,7 @@
                       <td>{{ $item->alamat_donatur }}</td>
                       <td>{{ $item->judul_buku }}</td>
                       <td>{{ $item->jumlah_buku }}</td>
-                      <td>{{ $item->jenis_buku }}</td>
+                      <td>{{ $item->cover_buku }}</td>
                       <td><a href="" class="btn btn-info"><span class="text">Edit</span></a>
                         <a href="" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                       </td>

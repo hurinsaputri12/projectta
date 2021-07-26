@@ -63,9 +63,18 @@
                               <td>{{ $item->jumlah_buku }}</td>
                               <td>{{ $item->alamat_donatur }}</td>
                               <td></td>
-                              <td><a href="#" class="btn btn-info"><span class="text">Diterima</span></a>
-                                <a href="#" class="btn btn-danger"><span class="text">Tidak diterima</span></a>
-                            </td>
+                              <td>
+                                <form action="{{ route('admin.donasibuku.upvalidasidonasi', [$item->id]) }}" method="POST">
+                                    @csrf
+                                    <input name="status" value="1" hidden>
+                                    <button class="btn btn-info" type="submit"><span class="text">Diterima</span></button>
+                                </form>
+                                <form action="{{ route('admin.donasibuku.upvalidasidonasi', [$item->id]) }}" method="POST">
+                                    @csrf
+                                    <input name="status" value="0" hidden>
+                                    <button class="btn btn-danger" type="submit"><span class="text">Tidak diterima</span></button>
+                                </form>
+                              </td>
                             </tr>
                             @endforeach
                         </tbody>

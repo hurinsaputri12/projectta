@@ -56,7 +56,7 @@
                           <td>{{ $item->jumlah_halaman }}</td>
                           <td>{{ $item->jumlah_buku }}</td>
                           <td><a href="{{ route('admin.buku.editbuku',[$item->buku_id])}}" class="btn btn-info"><span class="text">Edit</span></a>
-                            <a href="{{route('admin.buku.hapusbuku', [$item->buku_id])}}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                            <a href="{{route('admin.buku.hapusbuku', [$item->buku_id])}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                           </td>
                         </tr>
                         @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Donasi;
 use Illuminate\Http\Request;
+use Alert;
 
 class DonasiController extends Controller
 {
@@ -14,17 +15,33 @@ class DonasiController extends Controller
     public function validasiPengajuanDonasiBuku()
     {
         $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+            ->select('users.nama','donasis.id','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.foto_cover')
              ->where('jenis_buku','buku-cetak')
              ->where('status', 0)
              ->get();
         return view('admin.donasibuku.validasipengajuandonasi', compact('donasibuku'));
     }
 
+    public function upValidasiPengajuanDonasi(Request $request, $id){
+
+        $donasi = Donasi::find($id);
+        if($request->status == 1){
+        $donasi->update(['status' => 1]);
+        Alert::toast('Donasi Berhasil Disetujui', 'success');
+        return redirect()->back();
+        }
+        else{
+        Alert::toast('Donasi Tidak Disetujui', 'error');
+        return redirect()->back();
+        }
+    }
+
     public function daftarDonasiBuku()
     {
         $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+            ->select('users.nama','donasis.id','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.foto_cover')
              ->where('jenis_buku','buku-cetak')
-             ->where('status', 2)
+             ->where('status', 3)
              ->get();
         return view('admin.donasibuku.daftardonasi', compact('donasibuku'));
     }
@@ -32,26 +49,57 @@ class DonasiController extends Controller
     public function validasiDonasiBuku()
     {
         $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
+            ->select('users.nama','donasis.id','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.foto_cover')
              ->where('jenis_buku','buku-cetak')
-             ->where('status', 1)
+             ->where('status', 2)
              ->get();
         return view('admin.donasibuku.validasidonasi', compact('donasibuku'));
+    }
+
+    public function upValidasiDonasi(Request $request, $id){
+
+        $donasi = Donasi::find($id);
+        if($request->status == 1){
+        $donasi->update(['status' => 3]);
+        Alert::toast('Donasi Berhasil Disetujui', 'success');
+        return redirect()->back();
+        }
+        else{
+        Alert::toast('Donasi Tidak Disetujui', 'error');
+        return redirect()->back();
+        }
     }
 
     public function validasiPengajuanDonasiEbook()
     {
         $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->select('users.nama','donasis.id','donasis.jenis_buku','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.file_ebook', 'donasis.sinopsis')
              ->where('jenis_buku','ebook')
              ->where('status', 0)
              ->get();
         return view('admin.donasiebook.validasipengajuandonasiebook', compact('donasiebook'));
     }
 
+    public function upValidasiPengajuanDonasiEbook(Request $request, $id){
+
+        $donasiebook = Donasi::find($id);
+        if($request->status == 1){
+        $donasiebook->update(['status' => 1]);
+        Alert::toast('Donasi ebook Berhasil Disetujui', 'success');
+        return redirect()->back();
+        }
+        else{
+        Alert::toast('Donasi ebook Tidak Disetujui', 'error');
+        return redirect()->back();
+        }
+    }
+
     public function daftarDonasiEbook()
     {
         $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->select('users.nama','donasis.id','donasis.jenis_buku','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.file_ebook','donasis.sinopsis')
              ->where('jenis_buku','ebook')
-             ->where('status', 2)
+             ->where('status', 3)
              ->get();
         return view('admin.donasiebook.daftardonasiebook', compact('donasiebook'));
     }
@@ -59,11 +107,27 @@ class DonasiController extends Controller
     public function validasiDonasiEbook()
     {
         $donasiebook = Donasi::join('users','users.id','=','donasis.donatur')
+             ->select('users.nama','donasis.id','donasis.jenis_buku','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.file_ebook', 'donasis.sinopsis')
              ->where('jenis_buku','ebook')
-             ->where('status', 1)
+             ->where('status', 2)
              ->get();
         return view('admin.donasiebook.validasidonasiebook', compact('donasiebook'));
     }
+
+    public function upValidasiDonasiEbook(Request $request, $id){
+
+        $donasiebook = Donasi::find($id);
+        if($request->status == 1){
+        $donasiebook->update(['status' => 3]);
+        Alert::toast('Donasi Ebook Berhasil Disetujui', 'success');
+        return redirect()->back();
+        }
+        else{
+        Alert::toast('Donasi Ebook Tidak Disetujui', 'error');
+        return redirect()->back();
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

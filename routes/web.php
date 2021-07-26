@@ -63,11 +63,15 @@ Route::group(['middleware' => ['auth', 'admin-role']], function(){
     Route::get('/admin/pengguna/pengguna','PenggunaController@index')->name('admin.pengguna.pengguna');
     // donasi buku
     Route::get('/admin/donasibuku/validasipengajuandonasi','DonasiController@validasiPengajuanDonasiBuku')->name('admin.donasibuku.validasipengajuandonasi');
+    Route::post('/admin/donasibuku/upvalidasipengajuandonasi/{id}','DonasiController@upValidasiPengajuanDonasi')->name('admin.donasibuku.upvalidasipengajuandonasi');
     Route::get('/admin/donasibuku/daftardonasi','DonasiController@daftarDonasiBuku')->name('admin.donasibuku.daftardonasi');
     Route::get('/admin/donasibuku/validasidonasi','DonasiController@validasiDonasiBuku')->name('admin.donasibuku.validasidonasi');
+    Route::post('/admin/donasibuku/upvalidasidonasi/{id}','DonasiController@upValidasiDonasi')->name('admin.donasibuku.upvalidasidonasi');
     // donasi ebook
     Route::get('/admin/donasiebook/validasipengajuandonasiebook','DonasiController@validasiPengajuanDonasiEbook')->name('admin.donasiebook.validasipengajuandonasiebook');
+    Route::post('/admin/donasiebook/upvalidasipengajuandonasiebook/{id}','DonasiController@upValidasiPengajuanDonasiEbook')->name('admin.donasiebook.upvalidasipengajuandonasiebook');
     Route::get('/admin/donasiebook/daftardonasiebook','DonasiController@daftarDonasiEbook')->name('admin.donasiebook.daftardonasiebook');
     Route::get('/admin/donasiebook/validasidonasiebook','DonasiController@validasiDonasiEbook')->name('admin.donasiebook.validasidonasiebook');
+    Route::post('/admin/donasibuku/upvalidasidonasiebook/{id}','DonasiController@upValidasiDonasiEbook')->name('admin.donasiebook.upvalidasidonasiebook');
 });
 

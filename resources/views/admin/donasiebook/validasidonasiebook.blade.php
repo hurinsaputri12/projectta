@@ -45,10 +45,12 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Donatur</th>
+                            <th>Jenis Buku</th>
                             <th>Judul Buku</th>
                             <th>Jumlah Buku</th>
                             <th>Alamat</th>
                             <th>File Ebook</th>
+                            <th>Sinopsis</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -60,13 +62,24 @@
                             <tr>
                               <td>{{ $no++ }}</td>
                               <td>{{ $item->nama }}</td>
+                              <td>{{ $item->jenis_buku }}</td>
                               <td>{{ $item->judul_buku }}</td>
                               <td>{{ $item->jumlah_buku }}</td>
                               <td>{{ $item->alamat_donatur }}</td>
                               <td></td>
-                              <td><a href="#" class="btn btn-info"><span class="text">Diterima</span></a>
-                                <a href="#" class="btn btn-danger"><span class="text">Tidak diterima</span></a>
-                            </td>
+                              <td>{{ $item->sinopsis }}</td>
+                              <td>
+                                <form action="{{ route('admin.donasiebook.upvalidasidonasiebook', [$item->id]) }}" method="POST">
+                                    @csrf
+                                    <input name="status" value="1" hidden>
+                                    <button class="btn btn-info" type="submit"><span class="text">Diterima</span></button>
+                                </form>
+                                <form action="{{ route('admin.donasiebook.upvalidasidonasiebook', [$item->id]) }}" method="POST">
+                                    @csrf
+                                    <input name="status" value="0" hidden>
+                                    <button class="btn btn-danger" type="submit"><span class="text">Tidak diterima</span></button>
+                                </form>
+                              </td>
                             </tr>
                             @endforeach
                           </tbody>
