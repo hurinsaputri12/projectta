@@ -33,7 +33,7 @@
                                             id="exampleInputPassword" placeholder="Password" name="password" required>
                                     </div>
                                     <div class="text-right">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="{{ route('auth.reset')}}">Forgot Password?</a>
                                     </div>
                                     <hr>
                                      <div class="form-group">
@@ -42,10 +42,6 @@
                                             </button>
                                      </div>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                            <a class="small" href="register.html">Belum Punya Akun? Daftar</a>
-                                    </div>
                                     </div>
 
                             </div>

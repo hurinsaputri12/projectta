@@ -62,7 +62,7 @@
                       <td>{{ $item->judul_buku }}</td>
                       <td>{{ $item->jumlah_buku }}</td>
                       <td>{{ $item->cover_buku }}</td>
-                      <td><a href="" class="btn btn-info"><span class="text">Edit</span></a>
+                      <td><a href="{{ route('admin.donasibuku.migrasidatabuku',[$item->id])}}" class="btn btn-info"><span class="text">Migrasi Buku</span></a>
                         <a href="" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                       </td>
                     </tr>

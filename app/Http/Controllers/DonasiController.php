@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Donasi;
+use App\Kategori;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -58,9 +59,9 @@ class DonasiController extends Controller
 
     public function upValidasiDonasi(Request $request, $id){
 
-        $donasi = Donasi::find($id);
+        $donasibuku = Donasi::find($id);
         if($request->status == 1){
-        $donasi->update(['status' => 3]);
+        $donasibuku->update(['status' => 3]);
         Alert::toast('Donasi Berhasil Disetujui', 'success');
         return redirect()->back();
         }
@@ -68,6 +69,13 @@ class DonasiController extends Controller
         Alert::toast('Donasi Tidak Disetujui', 'error');
         return redirect()->back();
         }
+    }
+
+    public function migrasiDataBuku(Request $request, $id){
+
+        $kategori = Kategori::all();
+        $donasibuku = Donasi::find($id);
+        return view('admin.donasibuku.migrasidatabuku', compact('kategori', 'donasibuku'));
     }
 
     public function validasiPengajuanDonasiEbook()
@@ -126,6 +134,13 @@ class DonasiController extends Controller
         Alert::toast('Donasi Ebook Tidak Disetujui', 'error');
         return redirect()->back();
         }
+    }
+
+    public function migrasiDataEbook(Request $request, $id){
+
+        $kategori = Kategori::all();
+        $donasiebook = Donasi::find($id);
+        return view('admin.donasiebook.migrasidataebook', compact('kategori', 'donasiebook'));
     }
 
     /**

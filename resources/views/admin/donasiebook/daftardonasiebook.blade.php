@@ -66,7 +66,7 @@
                       <td>{{ $item->jumlah_buku }}</td>
                       <td></td>
                       <td>{{ $item->sinopsis }}</td>
-                      <td><a href="" class="btn btn-info"><span class="text">Edit</span></a>
+                      <td><a href="{{ route('admin.donasiebook.migrasidataebook',[$item->id])}}" class="btn btn-info"><span class="text">Migrasi Ebook</span></a>
                         <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
                       </td>
                     </tr>
