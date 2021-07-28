@@ -13,7 +13,7 @@
                         <strong>Migrasi Data Buku</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data"class="form-horizontal">
+                        <form action="{{ route('admin.donasi.upmigrasidatabuku', [$id]) }}" method="post" enctype="multipart/form-data"class="form-horizontal">
                             @csrf
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Judul Buku</label></div>
@@ -33,17 +33,17 @@
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Nama Pengarang</label></div>
-                                <div class="col-12 col-md-9"><input type="text" name="nama_pengarang" placeholder="Nama Pengarang" class="form-control" value="{{$donasibuku->nama_pengarang}}"></div>
+                                <div class="col-12 col-md-9"><input type="text" name="nama_pengarang" placeholder="Nama Pengarang" class="form-control"></div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Tahun Terbit</label></div>
-                                <div class="col-12 col-md-9"><input type="number" name="tahun_terbit" placeholder="Tahun Terbit" class="form-control" value="{{$donasibuku->tahun_terbit}}"></div>
+                                <div class="col-12 col-md-9"><input type="number" name="tahun_terbit" placeholder="Tahun Terbit" class="form-control"></div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Penerbit</label></div>
-                                <div class="col-12 col-md-9"><input type="text" name="penerbit" placeholder="Penerbit" class="form-control" value="{{$donasibuku->penerbit}}"></div>
+                                <div class="col-12 col-md-9"><input type="text" name="penerbit" placeholder="Penerbit" class="form-control"></div>
                             </div>
 
                             <div class="row form-group">
@@ -60,16 +60,18 @@
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Jenis Buku</label></div>
                                 <div class="col-12 col-md-9">
                                     <select name="jenis_buku" class="form-control">
-                                        <option value="Buku Cetak">Buku Cetak</option>
-                                        <option value="Ebook"><i>Ebook</i></option>
+                                        <option @if($donasibuku->jenis_buku == "buku-cetak") {{'selected="selected"'}} @endif value="buku-cetak">Buku Cetak</option>
+                                        <option @if($donasibuku->jenis_buku == "ebook") {{'selected="selected"'}} @endif value="ebook"><i>Ebook</i></option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Foto Cover</label></div>
                                 <div class="col-12 col-md-9">
-                                    <img src="{{ asset('/img/buku/'. $item->foto_cover)}}" width="200" alt="">
-                                    <input type="file" name="foto_cover" class="form-control"><small value="{{$donasibuku->foto_cover}}" class="form-text text-muted">Masukkan foto cover disini</small></div>
+                                    <img src="{{ asset('/img/buku/'. $donasibuku->foto_cover)}}" width="200" alt="">
+                                    <input type="file" name="foto_cover" class="form-control" value="{{ $donasibuku->foto_cover }}"><small class="form-text text-muted">Masukkan foto cover disini</small></div>
+                                </div>
                             </div>
 
                             <div class="card-footer">

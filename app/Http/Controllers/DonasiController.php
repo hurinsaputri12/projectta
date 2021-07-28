@@ -31,8 +31,9 @@ class DonasiController extends Controller
         Alert::toast('Donasi Berhasil Disetujui', 'success');
         return redirect()->back();
         }
-        else{
-        Alert::toast('Donasi Tidak Disetujui', 'error');
+        elseif($request->status == 0){
+        $donasi->delete();
+        Alert::toast('Donasi Tidak Disetujui','error');
         return redirect()->back();
         }
     }
@@ -65,8 +66,9 @@ class DonasiController extends Controller
         Alert::toast('Donasi Berhasil Disetujui', 'success');
         return redirect()->back();
         }
-        else{
-        Alert::toast('Donasi Tidak Disetujui', 'error');
+        elseif($request->status == 0){
+        $donasibuku->delete();
+        Alert::toast('Donasi Tidak Disetujui','error');
         return redirect()->back();
         }
     }
@@ -75,8 +77,17 @@ class DonasiController extends Controller
 
         $kategori = Kategori::all();
         $donasibuku = Donasi::find($id);
-        return view('admin.donasibuku.migrasidatabuku', compact('kategori', 'donasibuku'));
+        return view('admin.donasibuku.migrasidatabuku', compact('kategori', 'donasibuku', 'id'));
     }
+
+    public function upMigrasiDataBuku(Request $request, $id){
+
+            // Donasi::create($request->all());
+            // $donasi = Donasi::find($id);
+            // $donasi->delete();
+            // Alert::toast('Migrasi Data Buku Berhasil', 'success');
+            // return redirect()->route('admin.buku.buku');
+        }
 
     public function validasiPengajuanDonasiEbook()
     {
@@ -96,8 +107,9 @@ class DonasiController extends Controller
         Alert::toast('Donasi ebook Berhasil Disetujui', 'success');
         return redirect()->back();
         }
-        else{
-        Alert::toast('Donasi ebook Tidak Disetujui', 'error');
+        elseif($request->status == 0){
+        $donasiebook->delete();
+        Alert::toast('Donasi Tidak Disetujui','error');
         return redirect()->back();
         }
     }
@@ -130,8 +142,9 @@ class DonasiController extends Controller
         Alert::toast('Donasi Ebook Berhasil Disetujui', 'success');
         return redirect()->back();
         }
-        else{
-        Alert::toast('Donasi Ebook Tidak Disetujui', 'error');
+        elseif($request->status == 0){
+        $donasiebook->delete();
+        Alert::toast('Donasi Tidak Disetujui','error');
         return redirect()->back();
         }
     }
@@ -140,72 +153,10 @@ class DonasiController extends Controller
 
         $kategori = Kategori::all();
         $donasiebook = Donasi::find($id);
-        return view('admin.donasiebook.migrasidataebook', compact('kategori', 'donasiebook'));
+        return view('admin.donasiebook.migrasidataebook', compact('kategori', 'donasiebook', 'id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function upMigrasiDataEbook(Request $request, $id){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
