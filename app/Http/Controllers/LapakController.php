@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lapak;
 use File;
+use App\Relawan;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LapakController extends Controller
@@ -109,11 +110,42 @@ class LapakController extends Controller
 
     public function validasiRelawan()
     {
-        return view('admin.lapak.validasirelawan');
+        $relawan = Relawan::join('lapaks', 'lapaks.id', '=', 'relawans.lapakbaca_id')
+                            ->join('users', 'users.id', '=', 'relawans.relawan_id')
+                            ->select('users.nama', 'lapaks.nama_kegiatan', 'lapaks.tanggal', 'relawans.id')
+                            ->where('status', 0)->get();
+        return view('admin.lapak.validasirelawan', compact('relawan'));
+    }
+
+    public function upValidasiRelawan(Request $request , $id)
+    {
+        $relawan = Relawan::find($id);
+        if($request->status == 1){
+        $relawan->update(['status' => 1]);
+        Alert::toast('Relawan Berhasil Disetujui', 'success');
+        return redirect()->back();
+        }
+        elseif($request->status == 0){
+        $relawan->delete();
+        Alert::toast('Relawan Tidak Disetujui','error');
+        return redirect()->back();
+        }
     }
 
     public function daftarRelawan()
     {
-        return view('admin.lapak.daftarrelawan');
+        $relawan = Relawan::join('lapaks', 'lapaks.id', '=', 'relawans.lapakbaca_id')
+                            ->join('users', 'users.id', '=', 'relawans.relawan_id')
+                            ->select('users.nama', 'lapaks.nama_kegiatan', 'lapaks.tanggal', 'relawans.id')
+                            ->where('status', 1)->get();
+        return view('admin.lapak.daftarrelawan', compact('relawan'));
+    }
+
+    public function hapusRelawan($id)
+    {
+        $relawan = Relawan::find($id);
+        $relawan->delete();
+        Alert::toast('Relawan berhasil dihapus', 'success');
+        return redirect()->back();
     }
 }

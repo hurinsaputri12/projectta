@@ -34,7 +34,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Relawan</h 6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Relawan</h6>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -43,19 +43,26 @@
                 <tr>
                     <th>No</th>
                     <th>Nama relawan</th>
-                    <th>Tanggal</th>
                     <th>Nama kegiatan</th>
+                    <th>Tanggal</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
+                @php
+                    $no = 1;
+                @endphp
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Hurin In Dinnar Saputri</td>
-                        <td>12 Agustus 2020</td>
-                        <td>Taman Baca Bahagia</td>
-                        <td>Diterima</td>
-                    </tr>
+                    @foreach($relawan as $item)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->nama}}</td>
+                                <td>{{ $item->nama_kegiatan}}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd, D MMMM Y') }}</td>
+                                <td>
+                                    <a href="{{ route('admin.lapak.hapusrelawan',[$item->id])}}" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                                </td>
+                            </tr>
+                    @endforeach
             </tbody>
           </table>
         </div>

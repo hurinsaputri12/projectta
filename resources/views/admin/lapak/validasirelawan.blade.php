@@ -46,21 +46,35 @@
                         <tr>
                             <th>No</th>
                             <th>Nama relawan</th>
-                            <th>Tanggal</th>
                             <th>Nama kegiatan</th>
+                            <th>Tanggal</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
+                        @php
+                        $no = 1
+                        @endphp
                         <tbody>
+                            @foreach($relawan as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Hurin In Dinnar Saputri</td>
-                                <td>10 Januari 2021</td>
-                                <td>Taman Baca Bahagia</td>
-                                <td><a href="#" class="btn btn-info"><span class="text">Disetujui</span></a>
-                                    <a href="#" class="btn btn-danger"><span class="text">Tidak disetujui</span></a>
-                                </td>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->nama}}</td>
+                                <td>{{ $item->nama_kegiatan}}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd, D MMMM Y') }}</td>
+                                <td>
+                                    <form action="{{ route('admin.lapak.upvalidasirelawan', [$item->id]) }}" method="POST">
+                                        @csrf
+                                        <input name="status" value="1" hidden>
+                                        <button class="btn btn-info" type="submit"><span class="text">Disetujui</span></button>
+                                    </form>
+                                    <form action="{{ route('admin.lapak.upvalidasirelawan', [$item->id]) }}" method="POST">
+                                        @csrf
+                                        <input name="status" value="0" hidden>
+                                        <button class="btn btn-danger" type="submit"><span class="text">Tidak disetujui</span></button>
+                                    </form>
+                                  </td>
                             </tr>
+                            @endforeach
                     </tbody>
                   </table>
                 </div>

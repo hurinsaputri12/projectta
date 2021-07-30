@@ -58,7 +58,9 @@ Route::group(['middleware' => ['auth', 'admin-role']], function(){
     Route::post('/admin/lapak/updatelapak/{id}','LapakController@update')->name('admin.lapak.updatelapak');
     Route::get('/admin/lapak/hapuslapak/{id}','LapakController@destroy')->name('admin.lapak.hapuslapak');
     Route::get('/admin/lapak/validasirelawan','LapakController@validasiRelawan')->name('admin.lapak.validasirelawan');
+    Route::post('/admin/lapak/upvalidasirelawan/{id}','LapakController@upValidasiRelawan')->name('admin.lapak.upvalidasirelawan');
     Route::get('/admin/lapak/daftarrelawan','LapakController@daftarRelawan')->name('admin.lapak.daftarrelawan');
+    Route::get('/admin/lapak/hapusrelawan/{id}','LapakController@hapusRelawan')->name('admin.lapak.hapusrelawan');
     // pengguna
     Route::get('/admin/pengguna/pengguna','PenggunaController@index')->name('admin.pengguna.pengguna');
     // donasi buku
