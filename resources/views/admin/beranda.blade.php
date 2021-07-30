@@ -49,7 +49,7 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="h5 font-weight-bold text-primary text-uppercase mb-1">TOTAL DONATUR</div>
-                        <div class="h2 mb-0 font-weight-bold text-gray-800">50 Donatur</div>
+                        <div class="h2 mb-0 font-weight-bold text-gray-800">{{$jumlah_donatur}} Donatur</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -65,8 +65,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="h5 font-weight-bold text-success text-uppercase mb-1">TOTAL EBOOK TERBACA</div>
-                        <div class="h2 mb-0 font-weight-bold text-gray-800">50 Ebook</div>
+                        <div class="h5 font-weight-bold text-success text-uppercase mb-1">TOTAL BUKU</div>
+                        <div class="h2 mb-0 font-weight-bold text-gray-800">{{$jumlah_buku}} Buku</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -85,10 +85,10 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="h5 font-weight-bold text-info text-uppercase mb-1">TOTAL DONASI</div>
+                          <div class="h5 font-weight-bold text-info text-uppercase mb-1">TOTAL EBOOK</div>
                           <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                              <div class="h2 mb-0 mr-3 font-weight-bold text-gray-800">100 Donasi</div>
+                              <div class="h2 mb-0 mr-3 font-weight-bold text-gray-800">{{$jumlah_ebook}} Ebook</div>
                             </div>
 
                           </div>
@@ -107,8 +107,8 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="h5 font-weight-bold text-warning text-uppercase mb-1">TOTAL JADWAL LAPAK</div>
-                          <div class="h2 mb-0 font-weight-bold text-gray-800">10 Jadwal</div>
+                          <div class="h5 font-weight-bold text-warning text-uppercase mb-1">TOTAL LAPAK BACA</div>
+                          <div class="h2 mb-0 font-weight-bold text-gray-800">{{$jumlah_lapak}} Lapak</div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-calendar fa-2x text-gray-300"></i>
