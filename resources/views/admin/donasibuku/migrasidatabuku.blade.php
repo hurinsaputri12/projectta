@@ -67,11 +67,7 @@
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class="form-control-label">Foto Cover</label></div>
-                                <div class="col-12 col-md-9">
-                                    <img src="{{ asset('/img/buku/'. $donasibuku->foto_cover)}}" width="200" alt="">
-                                    <input type="file" name="foto_cover" class="form-control" value="{{ $donasibuku->foto_cover }}"><small class="form-text text-muted">Masukkan foto cover disini</small></div>
-                                </div>
+                                    <input type="text" name="foto_cover" class="form-control" hidden value="{{ $donasibuku->foto_cover }}"></div>
                             </div>
 
                             <div class="card-footer">

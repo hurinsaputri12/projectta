@@ -66,7 +66,7 @@
                               <td>{{ $item->judul_buku }}</td>
                               <td>{{ $item->jumlah_buku }}</td>
                               <td>{{ $item->alamat_donatur }}</td>
-                              <td></td>
+                              <td><a href="{{ route('admin.donasiebook.filepdf', [$item->id]) }}" target="_blank">{{$item->file_ebook}}</a></td>
                               <td>{{ $item->sinopsis }}</td>
                               <td>
                                 <form action="{{ route('admin.donasiebook.upvalidasidonasiebook', [$item->id]) }}" method="POST">

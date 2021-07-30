@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Donasi;
 use App\Kategori;
+use App\Buku;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -82,11 +83,11 @@ class DonasiController extends Controller
 
     public function upMigrasiDataBuku(Request $request, $id){
 
-            // Donasi::create($request->all());
-            // $donasi = Donasi::find($id);
-            // $donasi->delete();
-            // Alert::toast('Migrasi Data Buku Berhasil', 'success');
-            // return redirect()->route('admin.buku.buku');
+            Buku::create($request->all());
+            $donasibuku = Donasi::find($id);
+            $donasibuku->delete();
+            Alert::toast('Migrasi Data Buku Berhasil', 'success');
+            return redirect()->route('admin.buku.buku');
         }
 
     public function validasiPengajuanDonasiEbook()
@@ -157,6 +158,16 @@ class DonasiController extends Controller
     }
 
     public function upMigrasiDataEbook(Request $request, $id){
+        Buku::create($request->all());
+        $donasiebook = Donasi::find($id);
+        $donasiebook->delete();
+        Alert::toast('Migrasi Data Ebook Berhasil', 'success');
+        return redirect()->route('admin.ebook.ebook');
+    }
 
+    public function tampilEbook($id)
+    {
+        $ebook = Donasi::find($id);
+        return view('admin.ebook.filepdf', compact('ebook'));
     }
 }

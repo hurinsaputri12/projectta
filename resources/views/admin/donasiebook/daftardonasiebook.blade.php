@@ -64,7 +64,7 @@
                       <td>{{ $item->alamat_donatur }}</td>
                       <td>{{ $item->judul_buku }}</td>
                       <td>{{ $item->jumlah_buku }}</td>
-                      <td></td>
+                      <td><a href="{{ route('admin.donasiebook.filepdf', [$item->id]) }}" target="_blank">{{$item->file_ebook}}</a></td>
                       <td>{{ $item->sinopsis }}</td>
                       <td><a href="{{ route('admin.donasiebook.migrasidataebook',[$item->id])}}" class="btn btn-info"><span class="text">Migrasi Ebook</span></a>
                         <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>

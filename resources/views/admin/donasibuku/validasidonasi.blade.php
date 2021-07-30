@@ -62,7 +62,7 @@
                               <td>{{ $item->judul_buku }}</td>
                               <td>{{ $item->jumlah_buku }}</td>
                               <td>{{ $item->alamat_donatur }}</td>
-                              <td></td>
+                              <td><img src="{{ asset('img/buku/'. $item->foto_cover)}}" width = "100" ></td>
                               <td>
                                 <form action="{{ route('admin.donasibuku.upvalidasidonasi', [$item->id]) }}" method="POST">
                                     @csrf

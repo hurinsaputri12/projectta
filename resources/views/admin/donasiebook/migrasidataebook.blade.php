@@ -13,7 +13,7 @@
                         <strong>Migrasi Data Ebook</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data"class="form-horizontal">
+                        <form action="{{ route('admin.donasiebook.upmigrasidataebook', [$id]) }}" method="post" enctype="multipart/form-data"class="form-horizontal">
                             @csrf
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Judul Buku</label></div>
@@ -52,14 +52,23 @@
                             </div>
 
                             <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class="form-control-label">Jenis Buku</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="jenis_buku" class="form-control">
+                                        <option @if($donasiebook->jenis_buku == "buku-cetak") {{'selected="selected"'}} @endif value="buku-cetak">Buku Cetak</option>
+                                        <option @if($donasiebook->jenis_buku == "ebook") {{'selected="selected"'}} @endif value="ebook"><i>Ebook</i></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Jumlah Buku</label></div>
                                 <div class="col-12 col-md-9"><input type="number" name="jumlah_buku" placeholder="Jumlah Buku" class="form-control" value="{{$donasiebook->jumlah_buku}}"></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class="form-control-label">File Ebook</label></div>
-                                <div class="col-12 col-md-9"><input type="file" name="file_ebook" class="form-control"><small value="{{$donasiebook->file_ebook}}" class="form-text text-muted">Masukkan file ebook disini</small></div>
-                            </div>
+                                <input type="text" name="file_ebook" class="form-control" hidden value="{{ $donasiebook->file_ebook }}"></div>
+                        </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
