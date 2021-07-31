@@ -13,32 +13,41 @@
     <div class="row">
 
       <!-- Area Chart -->
-      <div class="col-xl-6 col-md-6 col-sm-12">
+      {{-- <div class="col-xl-6 col-md-6 col-sm-12">
         <div class="card shadow mb-4">
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Grafik Donatur Per Bulan</h6>
-            <div class="dropdown no-arrow">
-              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                <div class="dropdown-header">Dropdown Header:</div>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </div>
           </div>
           <!-- Card Body -->
           <div class="card-body">
+              <form action="">
+                <div class="row pt-4 pl-3">
+                    <div class="col-xl-10">
+                      <div class="form-group">
+                            <div class="input-group input-group-merge input-group-alternative mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light text-darker">Tahun</span>
+                                  </div>
+                                  <select class="form-control text-darker pl-2" name="tahun">
+                                    @foreach ($input_tahun as $val)
+                                      <option value="{{$val->year}}" @if($val->year == $tahun) {{'selected="selected"'}} @endif >{{$val->year}}</option>
+                                    @endforeach
+                                  </select>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-1">
+                      <button type="submit" class="btn btn-primary">Filter  </button>
+                    </div>
+                </div>
+              </form>
             <div class="chart-area">
-              <canvas id="myAreaChart"></canvas>
+              <div id="chart-buku"></div>
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <div class="col-xl-6 col-md-6 col-sm-12">
           <div class="row">
@@ -140,56 +149,23 @@
                 <th>Kategori</th>
                 <th>Jumlah Buku</th>
                 <th>Jenis Buku</th>
-                <th>Status</th>
               </tr>
             </thead>
             <tfoot>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Hurin In Dinnar</td>
-                <td>Impianku</td>
-                <td>Novel</td>
-                <td>5</td>
-                <td>Buku Cetak</td>
-                <td>Sudah Diterima</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Zaki</td>
-                <td>Pulang</td>
-                <td>Novel</td>
-                <td>3</td>
-                <td>Buku Cetak</td>
-                <td>Sudah Diterima</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Tulus</td>
-                <td>Monokrom</td>
-                <td>Novel</td>
-                <td>9</td>
-                <td>Buku Cetak</td>
-                <td>Sudah Diterima</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Rina</td>
-                <td>Lihatlah Awan</td>
-                <td>Novel</td>
-                <td>7</td>
-                <td>Buku Elektronik</td>
-                <td>Sudah Diterima</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Hadiyono</td>
-                <td>Ketika Cinta Bersemi</td>
-                <td>Novel</td>
-                <td>10</td>
-                <td>Buku Cetak</td>
-                <td>Sudah Diterima</td>
-              </tr>
+                @php
+                $no = 1
+            @endphp
+            @foreach ($daftar as $item)
+            <tr>
+              <td>{{ $no++ }}</td>
+              <td>{{ $item->nama }}</td>
+              <td>{{ $item->judul_buku }}</td>
+              <td>{{ $item->nama_kategori }}</td>
+              <td>{{ $item->jumlah_buku }}</td>
+              <td>{{ $item->jenis_buku }}</td>
+            </tr>
+            @endforeach
             </tbody>
           </table>
         </div>
@@ -204,3 +180,45 @@
 <!-- End of Content Wrapper -->
 @endsection
 
+{{-- @section('js')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+  Highcharts.chart('chart-buku', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'Grafik Jumlah Buku Yang Didonasikan'
+    },
+    xAxis: {
+        categories: {!!json_encode($categories)!!},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Berat Panen Madu (Kg)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} kg</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: {!!json_encode($tahun)!!},
+        data: {!!json_encode($data)!!},
+        // data: [1,2],
+    }]
+});
+</script>
+@endsection --}}
