@@ -68,7 +68,8 @@
 
                             <div class="row form-group">
                                     <input type="text" name="foto_cover" class="form-control" hidden value="{{ $donasibuku->foto_cover }}"></div>
-                            </div>
+                                    <input type="text" name="donatur_id" class="form-control" hidden value="{{ $donasibuku->user_id }}"></div>
+                                </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">

@@ -68,7 +68,8 @@
 
                             <div class="row form-group">
                                 <input type="text" name="file_ebook" class="form-control" hidden value="{{ $donasiebook->file_ebook }}"></div>
-                        </div>
+                                <input type="text" name="donatur_id" class="form-control" hidden value="{{ $donasiebook->user_id }}"></div>
+                            </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
