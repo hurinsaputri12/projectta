@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'Controller@landingPage')->name('landing');
+
 // register
 Route::get('/register','AuthController@tampilRegister')->name('auth.register');
 Route::post('/reg', 'AuthController@register')->name('reg');

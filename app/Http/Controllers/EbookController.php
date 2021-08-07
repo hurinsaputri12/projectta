@@ -123,7 +123,7 @@ class EbookController extends Controller
                 'kategori_id' => $request->kategori_id,
                 'file_ebook' => $file,
             ]);
-            $new_photo->move($path, $file);
+            $new_ebook->move($path, $file);
         }
         else{
             $ebook->update($request->all());

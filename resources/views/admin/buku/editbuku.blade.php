@@ -57,15 +57,6 @@
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class="form-control-label">Jenis Buku</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="jenis_buku" class="form-control">
-                                        <option value="Buku Cetak">Buku Cetak</option>
-                                        <option value="Ebook"><i>Ebook</i></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class="form-control-label">Foto Cover</label></div>
                                 <div class="col-12 col-md-9">
                                     <img src="{{ asset('/img/buku/'. $buku->foto_cover)}}" width="200" alt="">

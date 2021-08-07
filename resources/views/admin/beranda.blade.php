@@ -13,11 +13,11 @@
     <div class="row">
 
       <!-- Area Chart -->
-      {{-- <div class="col-xl-6 col-md-6 col-sm-12">
+      <div class="col-xl-6 col-md-6 col-sm-12">
         <div class="card shadow mb-4">
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Grafik Donatur Per Bulan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Grafik Donatur Per Bulan / {{$tahun}}</h6>
           </div>
           <!-- Card Body -->
           <div class="card-body">
@@ -42,12 +42,10 @@
                     </div>
                 </div>
               </form>
-            <div class="chart-area">
               <div id="chart-buku"></div>
-            </div>
           </div>
         </div>
-      </div> --}}
+      </div>
 
       <div class="col-xl-6 col-md-6 col-sm-12">
           <div class="row">
@@ -146,9 +144,9 @@
                 <th>No</th>
                 <th>Nama Donatur</th>
                 <th>Judul Buku</th>
-                <th>Kategori</th>
                 <th>Jumlah Buku</th>
                 <th>Jenis Buku</th>
+                <th>Alamat</th>
               </tr>
             </thead>
             <tfoot>
@@ -161,14 +159,15 @@
               <td>{{ $no++ }}</td>
               <td>{{ $item->nama }}</td>
               <td>{{ $item->judul_buku }}</td>
-              <td>{{ $item->nama_kategori }}</td>
               <td>{{ $item->jumlah_buku }}</td>
               <td>{{ $item->jenis_buku }}</td>
+              <td>{{ $item->alamat_donatur }}</td>
             </tr>
             @endforeach
             </tbody>
           </table>
         </div>
+        <a href="{{route('admin.donasibuku.daftardonasi')}}" class="btn btn-sm btn-primary">Lihat Lebih Banyak</a>
       </div>
     </div>
   </div>
@@ -180,7 +179,7 @@
 <!-- End of Content Wrapper -->
 @endsection
 
-{{-- @section('js')
+@section('js')
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
   Highcharts.chart('chart-buku', {
@@ -197,13 +196,13 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Berat Panen Madu (Kg)'
+            text: 'Jumlah Buku Yang Didonasikan'
         }
     },
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} kg</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f} buku</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
@@ -221,4 +220,4 @@
     }]
 });
 </script>
-@endsection --}}
+@endsection

@@ -83,7 +83,7 @@ class AuthController extends Controller
     public function logout(){
         Auth::logout();
         Alert::success('Selamat Tinggal', 'Anda Berhasil Logout');
-        return redirect()->route('auth.login');
+        return redirect()->route('landing');
     }
 
 

@@ -11,6 +11,7 @@ use App\Buku;
 use App\Lapak;
 use App\Kategori;
 use DB;
+use App\Donasi;
 
 class AdminController extends Controller
 {
@@ -23,41 +24,47 @@ class AdminController extends Controller
         $jumlah_lapak = Lapak::count();
 
         // menampilkan daftar donasi buku
-        $daftar = Buku::join('users','users.id','=','bukus.donatur_id')
-                        ->join('kategoris','kategoris.id','=','bukus.kategori_id')
-                        ->select('users.nama','bukus.judul_buku','kategoris.nama_kategori','bukus.jumlah_buku','bukus.jenis_buku')
-                        ->whereNotNull('bukus.donatur_id')
-                        ->get();
+        $daftar = Donasi::join('users','users.id','=','donasis.donatur')
+                ->select('users.nama','donasis.jumlah_buku','donasis.judul_buku','donasis.jenis_buku','donasis.alamat_donatur','donasis.created_at')
+                ->where('status', 3)
+                ->orderBy('donasis.id', 'desc')
+                ->take(5)
+                ->get();
 
         // menampilkan grafik donatur
-        // if($request->tahun == 0)
-        //     $tahun  = Date('Y');
-        // else
-        //     $tahun = $request->tahun;
+        if($request->tahun == ""){
+            $tahun  = Date('Y');
+        }
+        else{
+            $tahun = $request->tahun;
+        }
 
-        // $grafik = Buku::select(DB::raw('SUM(jumlah_buku) as total_buku'), 'bukus.created_at')
-        //                 ->whereNotNull('donatur_id')
-        //                 ->whereYear('created_at', $tahun)
-        //                 ->get();
+        $grafik = Buku::select('jumlah_buku','created_at')
+        ->whereNotNull('donatur_id')
+        ->whereYear('created_at', $tahun)
+        ->get();
 
-        // $categories = [];
+        $categories = [];
+        $data = [];
 
-        // $data = [];
+        foreach ($grafik as $item) {
+        $categories[] = \Carbon\Carbon::parse($item->created_at)->isoFormat('LL');
+        $data[] = $item->jumlah_buku;
+        }
 
-        // foreach ($grafik as $item) {
-        //         $categories[] = \Carbon\Carbon::parse($item->created_at)->isoFormat('MMMM');
-        //         $data[] = $item->total_buku;
-        // }
+        $input_tahun = Buku::select(DB::raw('YEAR(created_at) as year'))
+                                ->whereNotNull('bukus.donatur_id')
+                                ->groupBy('year')
+                                ->orderBy('year','desc')
+                                ->get();
 
-        // $input_tahun = Buku::select(DB::raw('YEAR(panen.created_at) as year'))
-        //                         ->whereNotNull('bukus.donatur_id')
-        //                         ->orderBy('year','desc')
-        //                         ->get();
-
+        // return $categories;
+        // return $data;
         return view('admin.beranda', compact('jumlah_donatur', 'jumlah_buku', 'jumlah_ebook', 'jumlah_lapak', 'daftar',
          'categories', 'data', 'input_tahun', 'tahun'));
 
     }
+
     public function tambahAdmin(){
         return view('auth.tambahadmin');
 
