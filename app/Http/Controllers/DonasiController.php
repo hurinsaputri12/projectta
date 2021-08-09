@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Donasi;
 use App\Kategori;
 use App\Buku;
+use App\TransaksiDonasi;
+use Auth;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -43,8 +45,9 @@ class DonasiController extends Controller
     {
         $donasibuku = Donasi::join('users','users.id','=','donasis.donatur')
             ->select('users.nama','donasis.id','donasis.judul_buku','donasis.jumlah_buku','donasis.alamat_donatur','donasis.foto_cover')
-             ->where('jenis_buku','buku-cetak')
-             ->where('status', 3)
+             ->where('donasis.jenis_buku','buku-cetak')
+             ->where('donasis.status', 3)
+            //  ->where('donasis.status', 4)
              ->get();
         return view('admin.donasibuku.daftardonasi', compact('donasibuku'));
     }
@@ -64,6 +67,12 @@ class DonasiController extends Controller
         $donasibuku = Donasi::find($id);
         if($request->status == 1){
         $donasibuku->update(['status' => 3]);
+        $penerima=Auth::user()->id;
+        TransaksiDonasi::create([
+            'penerima_id'=>$penerima,
+            'donasi_id'=>$id,
+
+        ]);
         Alert::toast('Donasi Berhasil Disetujui', 'success');
         return redirect()->back();
         }
@@ -85,7 +94,9 @@ class DonasiController extends Controller
 
             Buku::create($request->all());
             $donasibuku = Donasi::find($id);
-            $donasibuku->delete();
+            $donasibuku->update([
+                'status'=>4,
+            ]);
             Alert::toast('Migrasi Data Buku Berhasil', 'success');
             return redirect()->route('admin.buku.buku');
         }
@@ -140,6 +151,12 @@ class DonasiController extends Controller
         $donasiebook = Donasi::find($id);
         if($request->status == 1){
         $donasiebook->update(['status' => 3]);
+        $penerima=Auth::user()->id;
+        TransaksiDonasi::create([
+            'penerima_id'=>$penerima,
+            'donasi_id'=>$id,
+
+        ]);
         Alert::toast('Donasi Ebook Berhasil Disetujui', 'success');
         return redirect()->back();
         }
@@ -160,7 +177,9 @@ class DonasiController extends Controller
     public function upMigrasiDataEbook(Request $request, $id){
         Buku::create($request->all());
         $donasiebook = Donasi::find($id);
-        $donasiebook->delete();
+        $donasiebook->update([
+            'status'=>4,
+        ]);
         Alert::toast('Migrasi Data Ebook Berhasil', 'success');
         return redirect()->route('admin.ebook.ebook');
     }

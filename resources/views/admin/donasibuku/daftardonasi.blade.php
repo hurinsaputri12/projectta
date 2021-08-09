@@ -62,8 +62,9 @@
                       <td>{{ $item->judul_buku }}</td>
                       <td>{{ $item->jumlah_buku }}</td>
                       <td><img src="{{ asset('img/buku/'. $item->foto_cover)}}" width = "100" ></td>
-                      <td><a href="{{ route('admin.donasibuku.migrasidatabuku',[$item->id])}}" class="btn btn-info"><span class="text">Migrasi Buku</span></a>
-                        <a href="" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a>
+                      <td>
+                        <a href="{{ route('admin.donasibuku.migrasidatabuku',[$item->id])}}" class="btn btn-info"><span class="text">Migrasi Buku</span></a>
+                        {{-- <a href="" class="btn btn-danger" onclick="return confirm('Anda yakin ingin Menghapus ?')">Hapus</a> --}}
                       </td>
                     </tr>
                     @endforeach

@@ -38,6 +38,8 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Relawan' => $baseDir . '/app/Relawan.php',
     'App\\Role' => $baseDir . '/app/Role.php',
+    'App\\SimpanEbook' => $baseDir . '/app/SimpanEbook.php',
+    'App\\TransaksiDonasi' => $baseDir . '/app/TransaksiDonasi.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/CorsService.php',

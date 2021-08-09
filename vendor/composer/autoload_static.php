@@ -521,6 +521,8 @@ class ComposerStaticInita1229a3b6dd7754e65a15db7c440059e
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Relawan' => __DIR__ . '/../..' . '/app/Relawan.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
+        'App\\SimpanEbook' => __DIR__ . '/../..' . '/app/SimpanEbook.php',
+        'App\\TransaksiDonasi' => __DIR__ . '/../..' . '/app/TransaksiDonasi.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',

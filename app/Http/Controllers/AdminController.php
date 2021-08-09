@@ -26,7 +26,7 @@ class AdminController extends Controller
         // menampilkan daftar donasi buku
         $daftar = Donasi::join('users','users.id','=','donasis.donatur')
                 ->select('users.nama','donasis.jumlah_buku','donasis.judul_buku','donasis.jenis_buku','donasis.alamat_donatur','donasis.created_at')
-                ->where('status', 3)
+                ->where('status', 4)
                 ->orderBy('donasis.id', 'desc')
                 ->take(5)
                 ->get();
