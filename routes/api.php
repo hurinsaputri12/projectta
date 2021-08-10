@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/pengguna/register', 'AuthApiController@register');
 Route::post('/pengguna/login', 'AuthApiController@login');
+Route::post('/upRelawan', 'RelawanApiController@upRelawan');

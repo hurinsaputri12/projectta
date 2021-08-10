@@ -18,6 +18,7 @@ class AuthApiController extends Controller
             'alamat' => $request->alamat,
             'nomor_telepon' => $request->nomor_telepon,
             'api_token' => Str::random(64),
+            'role_id' => 2,
         ];
 
         User::create($user);
